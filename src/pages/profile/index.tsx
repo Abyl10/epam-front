@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import React from "react";
 import { Progress } from "@/components/ui/progress";
 import {
   Accordion,
@@ -13,14 +13,17 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
 } from "recharts";
+import { useUserContext } from "@/context/user-context";
 
-const Profile: FunctionComponent = () => {
+const Profile: React.FC = () => {
+  const { user } = useUserContext();
+
   const data = [
-    { name: "A", x: 21 },
-    { name: "B", x: 22 },
-    { name: "C", x: -32 },
-    { name: "D", x: -14 },
-    { name: "E", x: -51 },
+    { name: "Оқылым", x: user?.reading_exp || 0 },
+    { name: "Айтылым", x: user?.speaking_exp || 0 },
+    { name: "Грамматика", x: user?.grammar_exp || 0 },
+    { name: "Лексика", x: user?.vocabulary_exp || 0 },
+    { name: "Жазылым", x: user?.writing_exp || 0 },
   ];
 
   return (
@@ -32,7 +35,7 @@ const Profile: FunctionComponent = () => {
     >
       <div className="flex items-center justify-between pt-10 pb-10 px-4">
         <h1 className="font-poppins font-medium text-lg leading-5">
-          Привет, Асель
+          Привет, {user?.user_data.username || "Гость"}
         </h1>
         <svg
           width="29"

@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
 import { setToken } from "@/utils/token";
+import { useUserContext } from "@/context/user-context";
 
 export default function Login() {
   const router = useNavigate();
@@ -22,19 +23,19 @@ export default function Login() {
   const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+  const { fetchUserProfile } = useUserContext();
 
-  const handleLoginPush = () => {
+  const handleLoginPush = async () => {
     setLoading(true);
-    login(username, password)
-      .then((res) => {
-        setLoading(false);
-        setToken(res.tokens.access);
-        router("/");
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
+    try {
+      const res = await login(username, password);
+      setToken(res.tokens.access);
+      fetchUserProfile();
+      router("/");
+    } catch (err) {
+      setError((err as Error).message);
+      setLoading(false);
+    }
   };
 
   return (

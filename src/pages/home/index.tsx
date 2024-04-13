@@ -1,6 +1,9 @@
 import React, { useState, useRef } from "react";
 import HomeBackground from "@/assets/images/home-background.png";
 import PlayCircleButton from "@/components/play-circle-button";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
+import { AcademicBeginner } from "./drawers/academic-beginner";
+import { AcademicMedium } from "./drawers/academic-medium";
 
 interface ImageStyles {
   transform: string;
@@ -22,6 +25,12 @@ export default function Home() {
     imageStyleInitialValue
   );
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const [openDrawer, setOpenDrawer] = useState<string | null>(null);
+
+  const handleOpenDrawer = (drawerId: string) => {
+    setOpenDrawer(drawerId);
+  };
 
   const handleDragImage = (e: React.MouseEvent<HTMLDivElement>) => {
     if (dragging && containerRef.current) {
@@ -64,78 +73,65 @@ export default function Home() {
   };
 
   return (
-    <div
-      ref={containerRef}
-      onMouseMove={handleDragImage}
-      onMouseLeave={handleEndDragImage}
-      onMouseUp={handleEndDragImage}
-      onMouseDown={handleStartDragImage}
-      style={{
-        width: "100%",
-        height: "100vh",
-        cursor: dragging ? "grabbing" : "grab",
-        overflow: "hidden",
-        position: "relative",
-      }}
-    >
+    <Drawer>
       <div
+        ref={containerRef}
+        onMouseMove={handleDragImage}
+        onMouseLeave={handleEndDragImage}
+        onMouseUp={handleEndDragImage}
+        onMouseDown={handleStartDragImage}
         style={{
-          transform: imageStyles.transform,
-          width: "1000px",
-          // height: "800px",
+          width: "100%",
           height: "100vh",
-          position: "absolute",
-          left: "50%",
-          top: "50%",
-          transformOrigin: "center center",
-          marginLeft: "-320px",
-          marginTop: "-400px",
-          backgroundImage: `url(${imageStyles.backgroundImage})`,
-          objectFit: "contain",
-          backgroundSize: imageStyles.backgroundSize,
-          backgroundRepeat: "no-repeat",
+          cursor: dragging ? "grabbing" : "grab",
+          overflow: "hidden",
+          position: "relative",
         }}
       >
-        <PlayCircleButton
-          title="Академический Казахский I"
-          className="absolute top-[75%] left-[20%] text-white"
-          locked={false}
-        />
-        <PlayCircleButton
-          title="Академический Казахский II"
-          className="absolute top-[54%] left-[22%] text-white"
-        />
-        <PlayCircleButton
-          title="Академический Казахский III"
-          className="absolute top-[25%] left-[20%] text-white"
-        />
-
-        <PlayCircleButton
-          title="Инженерный Казахский I"
-          className="absolute top-[75%] left-[60%] text-white"
-        />
-        <PlayCircleButton
-          title="Инженерный Казахский II"
-          className="absolute top-[55%] left-[90%] text-white"
-        />
-        <PlayCircleButton
-          title="Инженерный Казахский III"
-          className="absolute top-[25%] left-[70%] text-white"
-        />
-
-        <PlayCircleButton
-          title="Бизнес Казахский III"
-          className="absolute top-[25%] left-[40%] text-white"
-        />
-        <PlayCircleButton
-          title="Бизнес Казахский II"
-          className="absolute top-[55%] left-[45%] text-white"
-        />
-        <PlayCircleButton
-          title="Бизнес Казахский I"
-          className="absolute top-[75%] left-[35%] text-white"
-        />
+        <div
+          style={{
+            transform: imageStyles.transform,
+            width: "1000px",
+            // height: "800px",
+            height: "100vh",
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            transformOrigin: "center center",
+            marginLeft: "-320px",
+            marginTop: "-470px",
+            backgroundImage: `url(${imageStyles.backgroundImage})`,
+            objectFit: "contain",
+            backgroundSize: imageStyles.backgroundSize,
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <DrawerTrigger>
+            <PlayCircleButton
+              title="Академический Казахский I"
+              className="absolute top-[75%] left-[20%] text-white"
+              locked={false}
+              onClick={() => handleOpenDrawer("academic-beginner")}
+            />
+          </DrawerTrigger>
+          <DrawerTrigger>
+            <PlayCircleButton
+              title="Академический Казахский II"
+              className="absolute top-[54%] left-[33%] text-white"
+              locked={false}
+              onClick={() => handleOpenDrawer("academic-medium")}
+            />
+          </DrawerTrigger>
+          <PlayCircleButton
+            title="Академический Казахский III"
+            className="absolute top-[25%] left-[20%] text-white"
+          />
+          <DrawerContent>
+            {openDrawer === "academic-beginner" && <AcademicBeginner />}
+            {openDrawer === "academic-medium" && <AcademicMedium />}
+          </DrawerContent>
+        </div>
       </div>
-    </div>
+    </Drawer>
   );
 }

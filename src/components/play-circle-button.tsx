@@ -1,6 +1,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Icons } from "./icons";
+import { useDrawer } from "@/context/drawer-context";
 
 interface IPlayCircleButtonProps
   extends React.HTMLAttributes<HTMLButtonElement> {
@@ -15,12 +16,14 @@ const PlayCircleButton: React.FC<IPlayCircleButtonProps> = ({
   className,
   ...props
 }) => {
+  const { openDrawer } = useDrawer();
   return (
     <button
       className={cn(
         "rounded-full w-[71px] h-[71px] bg-[#D9D9D9] relative flex items-center justify-center",
         className
       )}
+      onClick={() => !locked && openDrawer()}
       {...props}
     >
       <div

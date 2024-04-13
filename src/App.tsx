@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import RootLayout from "./components/layout/root-layout";
 import Home from "./pages/home";
@@ -7,7 +8,6 @@ import Profile from "./pages/profile";
 import AuthLayout from "./components/layout/auth-layout";
 import Login from "./pages/auth/login";
 import { getToken } from "./utils/token";
-import { useEffect } from "react";
 
 function App() {
   const navigate = useNavigate();
@@ -17,7 +17,6 @@ function App() {
     if (!token) {
       navigate("/auth/login");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
   return (
