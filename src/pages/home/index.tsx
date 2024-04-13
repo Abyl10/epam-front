@@ -89,7 +89,7 @@ export default function Home() {
           top: "50%",
           transformOrigin: "center center",
           marginLeft: "-320px",
-          marginTop: "-470px",
+          marginTop: "-400px",
           backgroundImage: `url(${imageStyles.backgroundImage})`,
           objectFit: "contain",
           backgroundSize: imageStyles.backgroundSize,
@@ -103,11 +103,37 @@ export default function Home() {
         />
         <PlayCircleButton
           title="Академический Казахский II"
-          className="absolute top-[54%] left-[33%] text-white"
+          className="absolute top-[54%] left-[22%] text-white"
         />
         <PlayCircleButton
           title="Академический Казахский III"
           className="absolute top-[25%] left-[20%] text-white"
+        />
+
+        <PlayCircleButton
+          title="Инженерный Казахский I"
+          className="absolute top-[75%] left-[60%] text-white"
+        />
+        <PlayCircleButton
+          title="Инженерный Казахский II"
+          className="absolute top-[55%] left-[90%] text-white"
+        />
+        <PlayCircleButton
+          title="Инженерный Казахский III"
+          className="absolute top-[25%] left-[70%] text-white"
+        />
+
+        <PlayCircleButton
+          title="Бизнес Казахский III"
+          className="absolute top-[25%] left-[40%] text-white"
+        />
+        <PlayCircleButton
+          title="Бизнес Казахский II"
+          className="absolute top-[55%] left-[45%] text-white"
+        />
+        <PlayCircleButton
+          title="Бизнес Казахский I"
+          className="absolute top-[75%] left-[35%] text-white"
         />
       </div>
     </div>

@@ -26,7 +26,7 @@ const PlayCircleButton: React.FC<IPlayCircleButtonProps> = ({
       <div
         className={cn(
           "rounded-full w-[62px] h-[62px] flex items-center justify-center",
-          !locked ? "bg-[#877AD5]" : "bg-[#969696]"
+          !locked ? "bg-[#613BE7]" : "bg-[#969696]"
         )}
       >
         <div className="w-[42px] h-[42px] rounded-full bg-white flex items-center justify-center">
@@ -40,7 +40,7 @@ const PlayCircleButton: React.FC<IPlayCircleButtonProps> = ({
       <div
         className={cn(
           "absolute -bottom-7 py-1 px-3 bg-white rounded-lg text-sm font-semibold text-center leading-4",
-          !locked ? "text-[#877AD5]" : "text-[#969696]"
+          !locked ? "text-[#613BE7]" : "text-[#969696]"
         )}
       >
         {title}
