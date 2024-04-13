@@ -11,9 +11,9 @@ function App() {
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/" element={<Reading />} />
-          <Route path="/" element={<Voice />} />
-          <Route path="/" element={<Profile />} />
+          <Route path="/reading" element={<Reading />} />
+          <Route path="/voice" element={<Voice />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
     </div>
