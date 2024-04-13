@@ -8,11 +8,7 @@ import Profile from "./pages/profile";
 import AuthLayout from "./components/layout/auth-layout";
 import Login from "./pages/auth/login";
 import { getToken } from "./utils/token";
-<<<<<<< Updated upstream
-=======
-import { useEffect } from "react";
 import VoiceStart from "./pages/voice-start";
->>>>>>> Stashed changes
 
 function App() {
   const navigate = useNavigate();
