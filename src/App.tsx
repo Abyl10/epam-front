@@ -9,6 +9,7 @@ import AuthLayout from "./components/layout/auth-layout";
 import Login from "./pages/auth/login";
 import { getToken } from "./utils/token";
 import VoiceStart from "./pages/voice-start";
+import BookDetail from "./pages/book";
 
 function App() {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ function App() {
           <Route path="voice" element={<Voice />} />
           <Route path="profile" element={<Profile />} />
           <Route path="voice-start" element={<VoiceStart />} />
+          <Route path="/book/:id" element={<BookDetail />} /> {/* Assuming `BookDetail` is a component for showing book details */}
         </Route>
       </Routes>
     </div>

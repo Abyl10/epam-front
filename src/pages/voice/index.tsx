@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Voice: FunctionComponent = () => {
-  const hasData = true; // Placeholder for your data checking condition
+  const hasData = false; // Placeholder for your data checking condition
   const navigate = useNavigate(); // Get access to the navigate function
 
   const handleClick = () => {
