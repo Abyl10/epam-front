@@ -12,7 +12,7 @@ const BottomNav = () => {
       <div className="flex flex-row justify-around bg-white w-full items-center">
         <Link to="/" className="relative items-center flex flex-col">
           {isHomeActive ? (
-            <Icons.homeActive className="w-6 h-6" />
+            <Icons.homeActive className="w-6 h-6" />  
           ) : (
             <Icons.home className="w-6 h-6" />
           )}
