@@ -18,7 +18,6 @@ export interface IProfileLearning {
   };
 }
 
-
 export interface IReadingTask {
   id: number;
   text: string;
@@ -68,4 +67,23 @@ export interface ILearningQuestionsByLevel {
   lectures: ILecture[];
   level_description: string;
   minimal_level_name: string;
+}
+
+export interface IChatReport {
+  id: number;
+  report_data: {
+    vocabulary: {
+      score: number;
+      comments: string[];
+    };
+    contextual_understanding: {
+      score: number;
+      comments: string[];
+    };
+    communication_effectiveness: {
+      score: number;
+      comments: string[];
+    };
+  };
+  datetime: string;
 }
