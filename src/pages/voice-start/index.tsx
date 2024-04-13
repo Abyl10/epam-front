@@ -37,19 +37,12 @@ const VoiceStart = () => {
           />
         </svg>
       </button>
-
-      <div className="flex flex-col items-center gap-y-4">
-        {/* <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/an-6owXUwdg?controls=0&showinfo=0"
-          frameBorder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        ></iframe> */}
+{/* pointer-events-none */}
+      <div className="pointer-events-none flex flex-col items-center gap-y-4">
         <iframe
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/XJeKMKPfnLU?si=CAhDLI9vWuduQ6Gn?controls=0&showinfo=0"
+          src="https://www.youtube.com/embed/XJeKMKPfnLU?si=CAhDLI9vWuduQ6Gn?&controls=0&showinfo=0&autoplay=1&mute=1"
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
