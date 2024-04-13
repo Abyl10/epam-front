@@ -9,16 +9,23 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useNavigate } from 'react-router-dom';
+
 
 const Voice: FunctionComponent = () => {
   const hasData = true; // Placeholder for your data checking condition
+  const navigate = useNavigate(); // Get access to the navigate function
+
+  const handleClick = () => {
+    navigate('/voice-start'); // Programmatic navigation
+  };
   return (
     <div>
       <div className="relative flex flex-col items-center">
         {/* Image tag for displaying the cat image */}
         <img src={cat} alt="Cat" className="w-full sticky top-0" />
 
-        <button className="z-20 relative -mt-20 px-6 py-4 inline-block bg-white text-[#613BE7] font-semibold text-sm leading-none tracking-normal font-poppins rounded-[20px]">
+        <button onClick={handleClick} className="z-20 relative -mt-20 px-6 py-4 inline-block bg-white text-[#613BE7] font-semibold text-sm leading-none tracking-normal font-poppins rounded-[20px]">
           Начать разговор
         </button>
       </div>

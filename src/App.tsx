@@ -8,6 +8,11 @@ import Profile from "./pages/profile";
 import AuthLayout from "./components/layout/auth-layout";
 import Login from "./pages/auth/login";
 import { getToken } from "./utils/token";
+<<<<<<< Updated upstream
+=======
+import { useEffect } from "react";
+import VoiceStart from "./pages/voice-start";
+>>>>>>> Stashed changes
 
 function App() {
   const navigate = useNavigate();
@@ -32,6 +37,7 @@ function App() {
           <Route path="reading" element={<Reading />} />
           <Route path="voice" element={<Voice />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="voice-start" element={<VoiceStart />} />
         </Route>
       </Routes>
     </div>
