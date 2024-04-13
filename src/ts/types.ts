@@ -1,21 +1,3 @@
-// {
-//     "user_data": {
-//         "id": 1,
-//         "username": "elamirkad",
-//         "email": "user@example.com"
-//     },
-//     "reading_exp": 2000,
-//     "speaking_exp": 3000,
-//     "grammar_exp": 1000,
-//     "vocabulary_exp": 0,
-//     "writing_exp": 0,
-//     "total_experience": 6000,
-//     "total_level": {
-//         "level": 6,
-//         "title": "Рубасы"
-//     }
-// }
-
 export interface IUserData {
   id: number;
   username: string;
@@ -34,4 +16,56 @@ export interface IProfileLearning {
     level: number;
     title: string;
   };
+}
+
+
+export interface IReadingTask {
+  id: number;
+  text: string;
+  audio_url: string;
+  question: string;
+  ideal_answer: string;
+  level: number;
+  solved: boolean;
+  path: string;
+}
+
+export interface IGrammarTask {
+  id: number;
+  question: string;
+  answers: {
+    answers: string[];
+  };
+  correct_answer: string;
+  level: number;
+  solved: boolean;
+  path: string;
+}
+
+export interface IVocabularyTask {
+  id: number;
+  question: string;
+  answers: {
+    answers: string[];
+  };
+  correct_answer: string;
+  level: number;
+  solved: boolean;
+  path: string;
+}
+
+export interface ILecture {
+  id: number;
+  title: string;
+  text: string;
+  level: number;
+}
+
+export interface ILearningQuestionsByLevel {
+  reading_task: IReadingTask[];
+  grammar_task: IGrammarTask[];
+  vocabulary_task: IVocabularyTask[];
+  lectures: ILecture[];
+  level_description: string;
+  minimal_level_name: string;
 }

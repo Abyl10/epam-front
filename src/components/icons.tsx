@@ -178,4 +178,27 @@ export const Icons = {
       />
     </svg>
   ),
+  folder: (props: LucideProps) => (
+    <svg
+      width="12"
+      height="13"
+      viewBox="0 0 12 13"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M11 6V9C11 11 10.5 11.5 8.5 11.5H3.5C1.5 11.5 1 11 1 9V4C1 2 1.5 1.5 3.5 1.5H4.25C5 1.5 5.165 1.72 5.45 2.1L6.2 3.1C6.39 3.35 6.5 3.5 7 3.5H8.5C10.5 3.5 11 4 11 6Z"
+        stroke="#0D101C"
+        strokeMiterlimit="10"
+      />
+      <path
+        d="M4 1.5H8.5C9.5 1.5 10 2 10 3V3.69"
+        stroke="#0D101C"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
 };

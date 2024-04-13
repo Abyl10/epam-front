@@ -57,14 +57,14 @@ const Profile: React.FC = () => {
       <div className="p-5 bottom-4">
         <div className="flex justify-between items-center">
           <h1 className="font-poppins font-semibold text-sm leading-[140%] text-[#613BE7]">
-            Жауынгер
+            {user?.total_level.title || "Жауынгер"}
           </h1>
           <span className="font-poppins font-normal text-sm leading-5 text-[#5F7084]">
-            0/100
+            {user?.total_level.level || 0} из 10 уровней
           </span>
         </div>
         <div className="mt-4">
-          <Progress value={33} />
+          <Progress value={(user?.total_level.level || 0) * 10} />
         </div>
       </div>
 
