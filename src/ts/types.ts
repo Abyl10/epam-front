@@ -108,7 +108,15 @@ export interface ILearningProgramByLevel {
   tasks_total: number;
 }
 
+export interface IReadingQuestion {
+  id: number;
+  question_en: string;
+  question_kz: string;
+}
 
+export interface IReadingQuestions {
+  questions: IReadingQuestion[];
+}
 
 export interface IReading {
   id: number;
@@ -117,4 +125,9 @@ export interface IReading {
   title: string;
   description: string;
   level: number;
+}
+
+export interface IReadingAnswersResponse {
+  comments: string[];
+  scores: number[];
 }
