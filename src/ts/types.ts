@@ -87,3 +87,23 @@ export interface IChatReport {
   };
   datetime: string;
 }
+
+export interface ILesson {
+  id: number;
+  lesson: number;
+  question: string;
+  answers: {
+    answers: string[];
+  };
+  correct_answer: string;
+}
+
+export interface ILearningProgramByLevel {
+  lessons: {
+    id: number;
+    level: number;
+    markdown: string;
+  }[];
+  tasks_done: number;
+  tasks_total: number;
+}

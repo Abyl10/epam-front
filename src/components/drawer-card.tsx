@@ -15,6 +15,7 @@ interface IDrawerCardProps {
   badgeStatus: string;
   skillRequired: string;
   description?: string;
+  onClick?: () => void;
 }
 
 const badgeColors: Record<string, string> = {
@@ -29,11 +30,12 @@ export const DrawerCard: React.FC<IDrawerCardProps> = ({
   description,
   badgeStatus,
   skillRequired,
+  onClick,
 }) => {
   const badgeColor = badgeColors[badgeStatus];
 
   return (
-    <Card className="cursor-pointer">
+    <Card className="cursor-pointer" onClick={onClick}>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>

@@ -1,14 +1,16 @@
 import { DrawerCard } from "@/components/drawer-card";
-import { ILearningQuestionsByLevel } from "@/ts/types";
+import { ILearningProgramByLevel } from "@/ts/types";
 import { skill_division } from "@/consts/levels";
+import { useNavigate } from "react-router-dom";
 
 interface IAcademicBeginnerLecturesProps {
-  data: ILearningQuestionsByLevel["lectures"] | undefined;
+  data: ILearningProgramByLevel["lessons"] | undefined;
 }
 
 export const AcademicBeginnerLectures: React.FC<
   IAcademicBeginnerLecturesProps
 > = ({ data }) => {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col gap-3 overflow-auto">
       {data && data.length === 0 && (
@@ -20,10 +22,13 @@ export const AcademicBeginnerLectures: React.FC<
         data.map((lecture) => (
           <DrawerCard
             key={lecture.id}
-            title={lecture.title}
-            description={lecture.text.substring(0, 50) + "..."}
+            title={lecture.markdown.substring(0, 20) + "..."}
+            description={lecture.markdown.substring(0, 50) + "..."}
             badgeStatus={lecture.level === 1 ? "Не начато" : "В процессе"}
             skillRequired={skill_division[lecture.level] + "+"}
+            onClick={() => {
+              navigate(`/lesson/${lecture.id}`);
+            }}
           />
         ))}
     </div>

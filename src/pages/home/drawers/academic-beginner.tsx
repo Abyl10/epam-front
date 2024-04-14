@@ -1,25 +1,25 @@
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import {
-  DrawerClose,
+  // DrawerClose,
   DrawerDescription,
-  DrawerFooter,
+  // DrawerFooter,
   DrawerHeader,
   DrawerTitle,
 } from "@/components/ui/drawer";
-import { useDrawer } from "@/context/drawer-context";
+// import { useDrawer } from "@/context/drawer-context";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { AcademicBeginnerQuestions } from "../components/academic-beginner/questions";
+// import { AcademicBeginnerQuestions } from "../components/academic-beginner/questions";
 import { AcademicBeginnerLectures } from "../components/academic-beginner/lectures";
 import { useEffect, useState } from "react";
-import { getLearningQuestionByLevel } from "@/api/learning";
-import { ILearningQuestionsByLevel } from "@/ts/types";
+import { getLearningProgramByLevel } from "@/api/learning";
+import { ILearningProgramByLevel } from "@/ts/types";
 
 export const AcademicBeginner = () => {
-  const { closeDrawer } = useDrawer();
-  const [data, setData] = useState<ILearningQuestionsByLevel>();
+  // const { closeDrawer } = useDrawer();
+  const [data, setData] = useState<ILearningProgramByLevel>();
 
   useEffect(() => {
-    getLearningQuestionByLevel(1).then((data) => setData(data));
+    getLearningProgramByLevel(1).then((data) => setData(data));
   }, []);
 
   console.log(data);
@@ -54,25 +54,25 @@ export const AcademicBeginner = () => {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="questions">
-            <AcademicBeginnerQuestions
-              reading_questions={data?.reading_task}
-              grammar_questions={data?.grammar_task}
-              vocabulary_questions={data?.vocabulary_task}
-            />
+            {/* <AcademicBeginnerQuestions
+            // reading_questions={data?.reading_task}
+            // grammar_questions={data?.grammar_task}
+            // vocabulary_questions={data?.vocabulary_task}
+            /> */}
           </TabsContent>
           <TabsContent value="lectures">
-            <AcademicBeginnerLectures data={data?.lectures} />
+            <AcademicBeginnerLectures data={data?.lessons} />
           </TabsContent>
         </Tabs>
       </div>
-      <DrawerFooter>
+      {/* <DrawerFooter>
         <Button onClick={() => closeDrawer()}>Submit</Button>
         <DrawerClose>
           <Button variant="outline" onClick={() => closeDrawer()}>
             Cancel
           </Button>
         </DrawerClose>
-      </DrawerFooter>
+      </DrawerFooter> */}
     </div>
   );
 };
