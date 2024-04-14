@@ -75,8 +75,8 @@ const VoiceStart = () => {
           referrerPolicy="strict-origin-when-cross-origin"
           className="pointer-events-none"
         ></iframe>
-        <p className="p-8">
-          {answer ? answer : "Сәлем, Асель. Саған қалай көмектесе алам?"}
+        <p className="p-8 text-center">
+          {answer ? answer : "Сәлем, Эламир. Саған қалай көмектесе алам?"}
         </p>
         <Siriwave color="#6adc92" cover={true} />
         <div className="mb-16 flex flex-row items-center space-x-4 w-full px-10">

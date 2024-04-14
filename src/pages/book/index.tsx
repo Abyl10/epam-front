@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function BookDetail() {
-  return (
-    <div>
-      
-    </div>
-  )
+  return <div>this is book detail page</div>;
 }
 
-export default BookDetail
+export default BookDetail;

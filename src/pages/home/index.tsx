@@ -126,6 +126,39 @@ export default function Home() {
             title="Академический Казахский III"
             className="absolute top-[25%] left-[20%] text-white"
           />
+          <PlayCircleButton
+            title="Инженерный Казахский I"
+            className="absolute top-[83%] left-[40%] text-white"
+          />
+          <PlayCircleButton
+            title="Инженерный Казахский II"
+            className="absolute top-[75%] left-[57%] text-white"
+          />
+
+          <PlayCircleButton
+            title="Инженерный Казахский III"
+            className="absolute top-[54%] left-[70%] text-white"
+          />
+
+          <PlayCircleButton
+            title="Бизнес Казахский III"
+            className="absolute top-[60%] left-[91%] text-white"
+          />
+
+          <PlayCircleButton
+            title="Бизнес Казахский IV"
+            className="absolute top-[28%] left-[78%] text-white"
+          />
+
+          <PlayCircleButton
+            title="Окылым I"
+            className="absolute top-[58%] left-[47%] text-white"
+          />
+          <PlayCircleButton
+            title="Окылым II"
+            className="absolute top-[32%] left-[47%] text-white"
+          />
+
           <DrawerContent>
             {openDrawer === "academic-beginner" && <AcademicBeginner />}
             {openDrawer === "academic-medium" && <AcademicMedium />}
