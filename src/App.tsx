@@ -34,7 +34,7 @@ function App() {
           <Route path="reading" element={<Reading />} />
           <Route path="voice" element={<Voice />} />
           <Route path="profile" element={<Profile />} />
-          <Route path="voice-start" element={<VoiceStart />} />
+          <Route path="voice-start/:id" element={<VoiceStart />} />
           <Route path="/book/:id" element={<BookDetail />} /> {/* Assuming `BookDetail` is a component for showing book details */}
         </Route>
       </Routes>

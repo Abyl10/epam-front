@@ -1,8 +1,34 @@
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { Icons } from "@/components/icons";
+import { Input } from "@/components/ui/input";
 import Siriwave from "react-siriwave";
+import { sendPromptToChat } from "@/api/chat";
+import { Loader } from "lucide-react";
 
 const VoiceStart = () => {
   const navigate = useNavigate(); // Get access to the navigate function
+  const { id } = useParams();
+  const [prompt, setPrompt] = useState<string>("");
+  const [answer, setAnswer] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handleSendPromptClick = () => {
+    if (id && prompt) {
+      setLoading(true);
+      sendPromptToChat(id, prompt)
+        .then((res) => {
+          if (res.response !== "") {
+            setAnswer(res.response);
+          }
+          setPrompt("");
+          setLoading(false);
+        })
+        .catch(() => {
+          setLoading(false);
+        });
+    }
+  };
 
   const handleClick = () => {
     navigate("/voice"); // Programmatic navigation
@@ -37,8 +63,8 @@ const VoiceStart = () => {
           />
         </svg>
       </button>
-{/* pointer-events-none */}
-      <div className="pointer-events-none flex flex-col items-center gap-y-4">
+      {/* pointer-events-none */}
+      <div className="flex flex-col items-center gap-y-4">
         <iframe
           width="560"
           height="315"
@@ -47,11 +73,45 @@ const VoiceStart = () => {
           frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           referrerPolicy="strict-origin-when-cross-origin"
-          
+          className="pointer-events-none"
         ></iframe>
-        <p className="p-20">Сәлем, Асель. Саған қалай көмектесе алам?</p>
+        <p className="p-8">
+          {answer ? answer : "Сәлем, Асель. Саған қалай көмектесе алам?"}
+        </p>
         <Siriwave color="#6adc92" cover={true} />
-        {/* <Siriwave style="ios9" /> */}
+        <div className="mb-16 flex flex-row items-center space-x-4 w-full px-10">
+          <Input
+            className="text-white w-full"
+            type="text"
+            onChange={(e) => setPrompt(e.target.value)}
+          />
+          <button
+            className="w-12 h-10 rounded-lg flex items-center justify-center cursor-pointer bg-white"
+            onClick={handleSendPromptClick}
+            disabled={loading}
+          >
+            {loading ? (
+              <Loader
+                size={24}
+                className="
+            animate-spin
+            text-[#613BE7]
+            
+            "
+              />
+            ) : (
+              <Icons.send />
+            )}
+            {/* <Icons.sendActive /> */}
+          </button>
+          <button
+            className="w-12 h-10 rounded-lg flex items-center justify-center cursor-pointer bg-white"
+            disabled={loading}
+          >
+            <Icons.voice />
+            {/* <Icons.voiceActive /> */}
+          </button>
+        </div>
       </div>
     </div>
   );

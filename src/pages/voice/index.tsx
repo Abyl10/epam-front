@@ -12,8 +12,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { IChatReport } from "@/ts/types";
 import { getChatReports } from "@/api/report";
+import { createChat } from "@/api/chat";
+import { useUserContext } from "@/context/user-context";
 
 const Voice: FunctionComponent = () => {
+  const { user } = useUserContext();
   const navigate = useNavigate(); // Get access to the navigate function
   const [report, setReport] = useState<IChatReport[]>([]);
 
@@ -24,6 +27,9 @@ const Voice: FunctionComponent = () => {
   const hasData = report.length > 0;
 
   const handleClick = () => {
+    createChat(user?.user_data.id || 1).then((res) =>
+      navigate(`/voice-start/${res.id}`)
+    );
     navigate("/voice-start"); // Programmatic navigation
   };
   return (
