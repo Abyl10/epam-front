@@ -35,3 +35,12 @@ export const getLearningLessonById = async (
     .get(`/learning/lesson/${lesson_id}/`)
     .then((response) => response.data);
 };
+
+export const getCorrectAnswerToQuestion = async (
+  id: string,
+  answer: string
+): Promise<{ correct: boolean }> => {
+  return await api
+    .post(`/learning/task/${id}/`, { answer })
+    .then((response) => response.data);
+};
