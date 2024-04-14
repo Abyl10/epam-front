@@ -68,7 +68,7 @@ const VoiceStart = () => {
         <iframe
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/XJeKMKPfnLU?si=CAhDLI9vWuduQ6Gn?&controls=0&showinfo=0&autoplay=1&mute=1"
+          src="https://www.youtube.com/embed/VQs6auebCvE?si=CxNIdw4l_Am9vBx9?&controls=0&showinfo=0&autoplay=1&mute=0"
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"

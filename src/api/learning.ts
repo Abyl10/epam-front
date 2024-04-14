@@ -3,7 +3,7 @@ import {
   IProfileLearning,
   ILearningQuestionsByLevel,
   ILearningProgramByLevel,
-  ILesson,
+  ILearningLessonByIdResponse,
 } from "@/ts/types";
 
 export const getLearningProfile = async (): Promise<IProfileLearning> => {
@@ -30,7 +30,7 @@ export const getLearningProgramByLevel = async (
 
 export const getLearningLessonById = async (
   lesson_id: string
-): Promise<ILesson[]> => {
+): Promise<ILearningLessonByIdResponse> => {
   return await api
     .get(`/learning/lesson/${lesson_id}/`)
     .then((response) => response.data);

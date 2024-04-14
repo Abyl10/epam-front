@@ -1,13 +1,7 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import cat from "@/assets/images/car.png";
 import noDataImage from "@/assets/images/no-data.png"; // Ensure this path is correct and accessible
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { IChatReport } from "@/ts/types";
@@ -45,26 +39,8 @@ const Voice: FunctionComponent = () => {
           Начать разговор
         </button>
       </div>
-      <div className="w-full p-4 text-left mt-4">
-        {" "}
-        {/* Added mt-4 to ensure it doesn't overlap */}
-        <h1 className="font-poppins font-medium text-2xl pt-11">
-          Отчет по последнему разговору
-        </h1>
-        <div className="mt-4">
-          <Select>
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Выбрать время" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="light">Сегодня, 14:30</SelectItem>
-              <SelectItem value="dark">Вчера, 12:38</SelectItem>
-              <SelectItem value="system">11ое апреля, 09:20</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
-      <div className="h-[350px] overflow-y-auto">
+      <div className="w-full p-4 text-left mt-4"></div>
+      <div className="h-[450px] overflow-y-auto">
         {hasData ? (
           report.map((item) => (
             <div className="p-4" key={item.id}>

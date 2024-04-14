@@ -131,3 +131,20 @@ export interface IReadingAnswersResponse {
   comments: string[];
   scores: number[];
 }
+
+export interface ITasks {
+  id: number;
+  lesson: number;
+  question: string;
+  answers: {
+    answers: string[];
+  };
+  correct_answer: string;
+}
+
+export interface ILearningLessonByIdResponse {
+  id: number;
+  level: number;
+  markdown: string;
+  tasks: ITasks[];
+}

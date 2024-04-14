@@ -1,0 +1,24 @@
+.markdown-body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.3em;
+}
+
+.markdown-body a {
+  color: blue;
+  text-decoration: none;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+.markdown-body p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
