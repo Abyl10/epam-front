@@ -1,21 +1,17 @@
-// import { Button } from "@/components/ui/button";
 import {
-  // DrawerClose,
   DrawerDescription,
-  // DrawerFooter,
   DrawerHeader,
   DrawerTitle,
 } from "@/components/ui/drawer";
-// import { useDrawer } from "@/context/drawer-context";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-// import { AcademicBeginnerQuestions } from "../components/academic-beginner/questions";
 import { AcademicBeginnerLectures } from "../components/academic-beginner/lectures";
 import { useEffect, useState } from "react";
 import { getLearningProgramByLevel } from "@/api/learning";
 import { ILearningProgramByLevel } from "@/ts/types";
+import { tasks } from "@/consts/levels";
+import { AcademicBeginnerQuestions } from "../components/academic-beginner/questions";
 
 export const AcademicBeginner = () => {
-  // const { closeDrawer } = useDrawer();
   const [data, setData] = useState<ILearningProgramByLevel>();
 
   useEffect(() => {
@@ -54,25 +50,13 @@ export const AcademicBeginner = () => {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="questions">
-            {/* <AcademicBeginnerQuestions
-            // reading_questions={data?.reading_task}
-            // grammar_questions={data?.grammar_task}
-            // vocabulary_questions={data?.vocabulary_task}
-            /> */}
+            <AcademicBeginnerQuestions beginner_tasks={tasks} />
           </TabsContent>
           <TabsContent value="lectures">
             <AcademicBeginnerLectures data={data?.lessons} />
           </TabsContent>
         </Tabs>
       </div>
-      {/* <DrawerFooter>
-        <Button onClick={() => closeDrawer()}>Submit</Button>
-        <DrawerClose>
-          <Button variant="outline" onClick={() => closeDrawer()}>
-            Cancel
-          </Button>
-        </DrawerClose>
-      </DrawerFooter> */}
     </div>
   );
 };

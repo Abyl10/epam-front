@@ -46,11 +46,17 @@ export const DrawerCard: React.FC<IDrawerCardProps> = ({
             <Icons.folder />
             <span className="ml-2">{skillRequired}</span>
           </div>
-          {badgeStatus && (
-            <Badge color={badgeColor} className={cn("text-white")}>
-              {badgeStatus}
-            </Badge>
-          )}
+          <Badge
+            className={cn(
+              "text-white",
+              "text-xs",
+              "px-2",
+              "rounded",
+              badgeColor
+            )}
+          >
+            {badgeStatus}{" "}
+          </Badge>
         </div>
       </CardFooter>
     </Card>

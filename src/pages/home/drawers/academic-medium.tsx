@@ -1,30 +1,62 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
 import {
-  DrawerClose,
   DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
 } from "@/components/ui/drawer";
-import { useDrawer } from "@/context/drawer-context";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { AcademicBeginnerLectures } from "../components/academic-beginner/lectures";
+import { useEffect, useState } from "react";
+import { getLearningProgramByLevel } from "@/api/learning";
+import { ILearningProgramByLevel } from "@/ts/types";
+import { tasks } from "@/consts/levels";
+import { AcademicBeginnerQuestions } from "../components/academic-beginner/questions";
 
 export const AcademicMedium = () => {
-  const { closeDrawer } = useDrawer();
+  const [data, setData] = useState<ILearningProgramByLevel>();
+
+  useEffect(() => {
+    getLearningProgramByLevel(2).then((data) => setData(data));
+  }, []);
+
+  console.log(data);
+
   return (
-    <div>
+    <div className="max-h-[600px] overflow-y-auto">
       <DrawerHeader>
-        <DrawerTitle>this is a medium</DrawerTitle>
-        <DrawerDescription>This action cannot be undone.</DrawerDescription>
+        <DrawerTitle>Академический Казахский II</DrawerTitle>
+        <DrawerDescription>Уровень: Бай +</DrawerDescription>
       </DrawerHeader>
-      <DrawerFooter>
-        <Button onClick={() => closeDrawer()}>Submit</Button>
-        <DrawerClose>
-          <Button variant="outline" onClick={() => closeDrawer()}>
-            Cancel
-          </Button>
-        </DrawerClose>
-      </DrawerFooter>
+      <div className="p-2">
+        <h4 className="mb-2 font-bold">Описание:</h4>
+        <p className="text-sm">
+          Academic Kazakh II — это продолжение специализированной программы,
+          предназначенной для изучающих казахский язык в академическом
+          контексте. Этот уровень направлен на углубление знаний грамматики,
+          улучшение навыков чтения и развитие способности поддерживать
+          длительные и содержательные разговоры с искусственным интеллектом.
+          Программа идеально подходит для студентов, исследователей или
+          профессионалов, готовящихся к академической деятельности в
+          казахскоязычной среде.
+        </p>
+      </div>
+      <div className="p-2">
+        <Tabs defaultValue="questions" className="w-full mb-2">
+          <TabsList className="w-full">
+            <TabsTrigger className="w-full" value="questions">
+              Задания
+            </TabsTrigger>
+            <TabsTrigger className="w-full" value="lectures">
+              Уроки
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent value="questions">
+            <AcademicBeginnerQuestions beginner_tasks={tasks} />
+          </TabsContent>
+          <TabsContent value="lectures">
+            <AcademicBeginnerLectures data={data?.lessons} />
+          </TabsContent>
+        </Tabs>
+      </div>
     </div>
   );
 };

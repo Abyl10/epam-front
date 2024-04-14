@@ -1,19 +1,21 @@
 import { DrawerCard } from "@/components/drawer-card";
-import { ILearningQuestionsByLevel } from "@/ts/types";
+
+interface IAcademicBeginnerTasks {
+  id: number;
+  text: string;
+  description: string;
+  badgeStatus: string;
+  skillRequired: string;
+}
 
 interface IAcademicBeginnerQuestionsProps {
-  reading_questions: ILearningQuestionsByLevel["reading_task"] | undefined;
-  grammar_questions: ILearningQuestionsByLevel["grammar_task"] | undefined;
-  vocabulary_questions:
-    | ILearningQuestionsByLevel["vocabulary_task"]
-    | undefined;
+  beginner_tasks: IAcademicBeginnerTasks[];
 }
 
 export const AcademicBeginnerQuestions: React.FC<
   IAcademicBeginnerQuestionsProps
-> = ({ reading_questions, grammar_questions, vocabulary_questions }) => {
-  const isQuestionsEmpty =
-    !reading_questions && !grammar_questions && !vocabulary_questions;
+> = ({ beginner_tasks }) => {
+  const isQuestionsEmpty = !beginner_tasks;
   return (
     <div className="flex flex-col gap-3 overflow-auto">
       {isQuestionsEmpty && (
@@ -21,58 +23,16 @@ export const AcademicBeginnerQuestions: React.FC<
           Нет доступных заданий
         </div>
       )}
-      {reading_questions &&
-        reading_questions.map((question) => (
+      {beginner_tasks &&
+        beginner_tasks.map((question) => (
           <DrawerCard
             key={question.id}
             title={question.text}
-            description={question.question}
-            badgeStatus={question.solved ? "Сделано" : "Не начато"}
+            description={question.description}
+            badgeStatus={question.badgeStatus}
             skillRequired={"Навык чтения"}
           />
         ))}
-      {grammar_questions &&
-        grammar_questions.map((question) => (
-          <DrawerCard
-            key={question.id}
-            title={question.question}
-            badgeStatus={question.solved ? "Сделано" : "Не начато"}
-            skillRequired={"Грамматика"}
-          />
-        ))}
-      {vocabulary_questions &&
-        vocabulary_questions.map((question) => (
-          <DrawerCard
-            key={question.id}
-            title={question.question}
-            badgeStatus={question.solved ? "Сделано" : "Не начато"}
-            skillRequired={"Словарь"}
-          />
-        ))}
-      {/* <DrawerCard
-        title={"Чтение академических текстов"}
-        description={
-          "Каждое чтение сопровождается вопросами для самопроверки понимания прочитанного. 2 текста."
-        }
-        badgeStatus={"В процессе"}
-        skillRequired={"Навык чтения"}
-      />
-      <DrawerCard
-        title={"Чтение академических текстов"}
-        description={
-          "Каждое чтение сопровождается вопросами для самопроверки понимания прочитанного. 2 текста."
-        }
-        badgeStatus={"В процессе"}
-        skillRequired={"Навык чтения"}
-      />
-      <DrawerCard
-        title={"Чтение академических текстов"}
-        description={
-          "Каждое чтение сопровождается вопросами для самопроверки понимания прочитанного. 2 текста."
-        }
-        badgeStatus={"В процессе"}
-        skillRequired={"Навык чтения"}
-      /> */}
     </div>
   );
 };
