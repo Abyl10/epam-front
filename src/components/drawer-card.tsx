@@ -12,10 +12,10 @@ import { cn } from "@/lib/utils";
 
 interface IDrawerCardProps {
   title: string;
-  badgeStatus: string;
   skillRequired: string;
   description?: string;
   onClick?: () => void;
+  badgeStatus?: string;
 }
 
 const badgeColors: Record<string, string> = {
@@ -32,7 +32,7 @@ export const DrawerCard: React.FC<IDrawerCardProps> = ({
   skillRequired,
   onClick,
 }) => {
-  const badgeColor = badgeColors[badgeStatus];
+  const badgeColor = badgeColors[badgeStatus || ""];
 
   return (
     <Card className="cursor-pointer" onClick={onClick}>
@@ -46,17 +46,11 @@ export const DrawerCard: React.FC<IDrawerCardProps> = ({
             <Icons.folder />
             <span className="ml-2">{skillRequired}</span>
           </div>
-          <Badge
-            className={cn(
-              "text-white",
-              "text-xs",
-              "px-2",
-              "rounded",
-              badgeColor
-            )}
-          >
-            {badgeStatus}{" "}
-          </Badge>
+          {badgeStatus && (
+            <Badge color={badgeColor} className={cn("text-white")}>
+              {badgeStatus}
+            </Badge>
+          )}
         </div>
       </CardFooter>
     </Card>

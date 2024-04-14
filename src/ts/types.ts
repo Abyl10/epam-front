@@ -107,3 +107,14 @@ export interface ILearningProgramByLevel {
   tasks_done: number;
   tasks_total: number;
 }
+
+
+
+export interface IReading {
+  id: number;
+  text_en: string;
+  text_kz: string;
+  title: string;
+  description: string;
+  level: number;
+}
