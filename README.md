@@ -1,5 +1,7 @@
 # HACK NU 2024 | EPAM Frontend
 
+## Setup
+Follow these steps to get the project up and running on your local machine:
 ```bash
 git clone https://github.com/Abyl10/epam-front.git
 cd epam-front
@@ -8,18 +10,19 @@ npm run dev
 ```
 
 The development server will run on port: ```localhost:5173``` 
-
 This is ready login creadentials: 
+
 ```
 login: elamirkad
 password: elamirkad2004
 ```
 
-
+## Backend Repo
 This is the link to our backend: https://github.com/elamirKad/hacknu2024
 
 
-Our Functions: 
+## Our Functions
+
 1. AI Conversations
 - Functionality: Engages users in simulated conversations with an AI to practice speaking Kazakh.
 - Benefits: Helps improve pronunciation, fluency, and listening skills. Users receive instant feedback on their speech, including corrections and suggestions for improvement.
@@ -40,3 +43,6 @@ Our Functions:
 - Benefits: Provides a personalized learning experience that aligns with the user’s goals and interests, making learning more relevant and effective.
 
 
+
+## Contributing
+Contributions to this project are welcome. Feel free to fork the repository, create a new branch, add your features or fixes, and submit a pull request.
