@@ -49,7 +49,6 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     if (token) {
       getLearningProfile()
         .then((res) => {
-          console.log(res);
           setUser(res)
         })
         .catch(console.error);

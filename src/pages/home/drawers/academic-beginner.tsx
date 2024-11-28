@@ -18,8 +18,6 @@ export const AcademicBeginner = () => {
     getLearningProgramByLevel(1).then((data) => setData(data));
   }, []);
 
-  console.log(data);
-
   return (
     <div className="max-h-[600px] overflow-y-auto">
       <DrawerHeader>
